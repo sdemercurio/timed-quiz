@@ -2,6 +2,8 @@ nav {
 
 }
 
+/* find a better way to move .time to the right */
+
 .time {
     margin-left: 1000px;
     margin-right: 10px;

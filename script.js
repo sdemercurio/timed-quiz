@@ -1,6 +1,13 @@
-// Create timer to update every time it loops through
+// Create all necessary elements
 var timerEl = document.querySelector("#time");
 var mainEl = document.getElementById(".main");
+var h1El = document.querySelectorAll("h1");
+var h2El = document.querySelectorAll("h2");
+var btn = document.querySelectorAll("button");
+var scores = document.querySelectorAll("div");
+var input = document.querySelectorAll("div");
+var info = document.querySelectorAll("p");
+var submit = document.querySelector("#submit");
 
 
 
@@ -18,9 +25,14 @@ var interval = setInterval(function(){
   }
 }, 1000);
 
-/* Possible code for main content (heading, buttons, etc)
+// Possible code for main content (heading, buttons, etc)
+var btn = document.createElement("button");
+btn.textContent = "answer";
 
-function sendMessage() { // Connect this to Heading
+document.body.appendChild(btn);
+
+
+/*function sendMessage() { // Connect this to Heading
     timerEl.textContent = 
 
     mainEl.appendChild */
