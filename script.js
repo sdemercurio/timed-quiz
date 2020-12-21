@@ -1,13 +1,17 @@
 // Create all necessary elements
 var timerEl = document.querySelector("#time");
 var mainEl = document.getElementById(".main");
-var h1El = document.querySelectorAll("h1");
-var h2El = document.querySelectorAll("h2");
-var btn = document.querySelectorAll("button");
-var scores = document.querySelectorAll("div");
-var input = document.querySelectorAll("div");
-var info = document.querySelectorAll("p");
-var submit = document.querySelector("#submit");
+
+var h1El = document.createElement("h1");
+var h2El = document.createElement("h2");
+var info = document.createElement("p");
+var btn = document.createElement("button");
+var correct = document.createElement("div")
+var wrong = document.createElement("div");
+var scores = document.createElement("div");
+var input = document.createElement("div");
+var submit = document.createElementr("#submit");
+
 
 
 
