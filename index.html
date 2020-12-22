@@ -1,49 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
+
 <body>
-    <!-- NavBar with Timer and High Score link -->
-    <h1 class="time"></h1>
-    <div id="main"></div>
-    <nav>
-        <ul class="nav">
-            <li class="high-scores">
-              <a class="nav-link active" href="#">High Scores</a>
-            </li>
-            <li class="time">Time Reminaing: </li>
-            <div id="timer">Start</div>
-          </ul>
-    
-    </nav>
-    <div class="container">
-    <!-- Heading -->
-    <h1 class="main"></h1>
-
-    <!-- paragraph -->
-        
-    <!-- Buttons -->
-
-    <form> <!-- for initals submission -->
-        <div class="input-group mb-3 ">
-            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-          </div>
-    </form>
-
-    <!-- Correct! or Wrong! message -->
+    <!-- Score link and timer -->
+    <header class="p-3">
+        <div class="row">
+            <div class="col-6">
+                <div class="scores">
+                    <a class="score-link active" href="#">High Scores<span id="high-scores"></span></a>
+                </div>
+            </div>
+            <div class="col-6 time-remaining text-right">
+                Time Remaining: <span id="timer"></span>
+            </div>
+        </div>
+    </header>
 
 
+    <!-- Main content -->
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+
+                    <!-- Main info that will hide upon button click -->
+                    <div class="d-block" id="main-info">
+
+                        <h1>Code Quiz Challenge</h1>
+                        <p>Try to answer the folllowing code related questions within the time limit.
+                            Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
+
+                        <div class="form-row text-center">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary" value="begin" id="event-type">Begin
+                                    Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quiz content that will appear upon button click -->
+
+                    <div class="d-none" id="begin-quiz">
+                        <h2>Question 1: Javascript is a _______-side programming language</h2>
+                        <div class="d-grid gap-2 col-6">
+                            <button class="btn btn-primary" type="button">Button</button>
+                            <button class="btn btn-primary" type="button">Button</button>
+                            <button class="btn btn-primary" type="button">Button</button>
+                            <button class="btn btn-primary" type="button">Button</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3"></div>
+            </div>
+        </div>
+    </main>
 
 
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-<script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

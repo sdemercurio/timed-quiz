@@ -1,42 +1,45 @@
 // Create all necessary elements
+var eventType = document.querySelector("#event-type"); 
 var timerEl = document.querySelector("#time");
 var mainEl = document.getElementById(".main");
-
-var h1El = document.createElement("h1");
-var h2El = document.createElement("h2");
-var info = document.createElement("p");
-var btn = document.createElement("button");
-var correct = document.createElement("div")
-var wrong = document.createElement("div");
-var scores = document.createElement("div");
-var input = document.createElement("div");
-var submit = document.createElementr("#submit");
-
+var mainInfoEl = document.querySelectorAll("#main-info");
+var beginQuizEl = document.querySelectorAll("#begin-quiz");
 
 
 
 // Timer
 
-var timer = 30;
-var interval = setInterval(function(){
-  document.getElementById('timer').innerHTML=timer;
-  timer--;
-  if (timer === 0){
+var timer = 5;
+var interval = setInterval(function () {
+  document.getElementById('timer').innerHTML = timer;
+  --timer;
+  console.log(timer);
+  if (timer === 0) {
     clearInterval(interval);
-    document.getElementById('count').innerHTML='Done';
-    // or...
-    alert("You're out of time!");
+    document.getElementById('timer').innerHTML = timer;
   }
 }, 1000);
 
 // Possible code for main content (heading, buttons, etc)
-var btn = document.createElement("button");
-btn.textContent = "answer";
 
-document.body.appendChild(btn);
+function switchVisible() {
+  if (document.getElementById('begin-quiz') !== undefined) {
+
+      if (document.getElementById('begin-quiz').style.display == 'block') {
+          document.getElementById('begin-quiz').style.display = 'none';
+          document.getElementById('main-info').style.display = 'block';
+      } else {
+          document.getElementById('begin-quiz').style.display = 'block';
+          document.getElementById('main-info').style.display = 'none';
+      }
+  }
+}
+
+document.getElementById ("button").addEventListener ("click", switchVisible, false);
+
 
 
 /*function sendMessage() { // Connect this to Heading
-    timerEl.textContent = 
+    timerEl.textContent =
 
     mainEl.appendChild */

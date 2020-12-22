@@ -1,14 +1,41 @@
-nav {
+body {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    margin-top: 50px;
+}
+
+.time-remaining {
+    float: right;
 
 }
 
-/* find a better way to move .time to the right */
-
-.time {
-    margin-left: 1000px;
-    margin-right: 10px;
+#timer {
+    margin-right: 20px;
 }
 
-.high-scores {
-    margin-left: 50px;
+.scores {
+    float: left;
+    margin-left: 20px;
+}
+
+#begin-quiz {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+p {
+    padding: 10px;
+    text-align: center;
+
+}
+
+button {
+    text-align: center;
 }
