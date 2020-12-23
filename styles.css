@@ -19,7 +19,15 @@ header {
     padding-top: 30px;
 }
 
-.main-info {
+#main-info {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px;
 }
+
+#quiz {
+    text-align: center;
+    margin-top: 60px;
+    display: none;
+
+}
+
