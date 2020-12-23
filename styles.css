@@ -1,41 +1,25 @@
 body {
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
-main {
-    margin-top: 50px;
+header {
+    display: flex;
+    align-items: center;
+  
+
 }
 
-.time-remaining {
+#timer-container {
     float: right;
-
 }
 
-#timer {
-    margin-right: 20px;
+#high-scores {
+    padding-top: 30px;
 }
 
-.scores {
-    float: left;
-    margin-left: 20px;
-}
-
-#begin-quiz {
-    display: none;
-}
-
-h1 {
+.main-info {
     text-align: center;
-    margin-top: 50px;
-}
-
-p {
-    padding: 10px;
-    text-align: center;
-
-}
-
-button {
-    text-align: center;
+    margin-top: 40px;
 }
