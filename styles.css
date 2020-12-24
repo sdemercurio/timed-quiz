@@ -7,20 +7,33 @@ body {
 header {
     display: flex;
     align-items: center;
-  
-
 }
 
 #timer-container {
     float: right;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #score-count {
     float: right;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #high-scores {
     padding-top: 30px;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
 }
 
 #main-info {
@@ -33,6 +46,12 @@ header {
     margin-top: 60px;
     display: none;
 
+}
+
+#question {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    font-weight: bold;
 }
 
 /* Quiz buttons */

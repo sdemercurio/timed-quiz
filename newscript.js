@@ -1,12 +1,3 @@
-// const question = document.querySelector("#question");
-// // const answerChoice = Array.from(document.querySelector("#quiz-button"));
-// const scoreText = document.querySelector("#score")
-// //const score = document.querySelector("#score")
-// let currentQuestion = {}
-// let correctAnswer = true
-// let score = 0
-// let otherQuestions = []
-
 
 // when the begin quiz button is pushed
 //   then load the questions
@@ -17,54 +8,51 @@
 //     log score and 
 //     display "correct"
 //     load next question
-// /*   if the answer is wrong
-//        pause the timer
-//        deducting time
-//        displaying "wrong"
-// */     load next question
-      
-      
-     
+//   if the answer is wrong
+//      pause the timer
+//      deducting time
+//      displaying "wrong"
+//      load next question
 
-      // // startTimer
-      // pauseTimer
-      // logScore
-      // displayMessage
-      // loadNextQuestion
-let i = 0; 
+// // startTimer
+// pauseTimer
+// logScore
+// displayMessage
+// loadNextQuestion
+let i = 0;
 let scorePoints = 0
-     
 
-var timer = 5;
+
+var timer = 60;
 
 var questions = [
   {
-    question: "The first index of an array is ____.",
-    choices: ["0", "1", "6", "custom"],
-    answer: "0"
-  }, 
+    question: "Commonly Used data types DO NOT include:",
+    choices: ["stings", "alerts", "booleans", "numbers"],
+    answer: "alerts"
+  },
   {
-    question: "Javascript was created by ____.",
-    choices: ["Jeffrey Javascript", "Brendan Eich", "Who F. Cares Jr.", "Ned Flanders"],
-    answer: "Brendan Eich"
-  }, 
+    question: "The condition in an if / else statment is enclosed within _____.",
+    choices: ["parentheses", "quotes", "curly brackets", "square brackets"],
+    answer: "parentheses"
+  },
   {
-    question: "What is not an example of an HTML event?",
-    choices: ["User hitting a key", "User clicking a mouse", "Web page loading", "When my dad yells at me"],
-    answer: "When my dad yells at me"
-  }, 
+    question: "What javascipt method can we use to select an html element?",
+    choices: ["document.queryselector()", "document.getElementChild", "document.getElementById", "Both 1 and 3"],
+    answer: "Both 1 and 3"
+  },
   {
-    question: "What are Javascript's Boolean data type values?",
-    choices: ["skibby and hibby", "property and key name", "Tom and Jerry", "true and false"],
-    answer: "true and false"
-  }, 
+    question: "What html tag is NOT included in the HEAD tag?",
+    choices: ["link", "meta", "title", "header"],
+    answer: "header"
+  },
   {
-    question: "Javascript variables can be ______ ",
-    choices: ["globally scoped", "function scoped", "locally scoped", "all of the above"],
-    answer: "all of the above"
-  }, 
+    question: "What attribute is used in html to decorate content?",
+    choices: ["css", "class", "src", "style"],
+    answer: "style"
+  }
 
-   
+
 ];
 
 // Variables for each answer button
@@ -73,9 +61,25 @@ let answerAButton = document.getElementById('0');
 let answerBButton = document.getElementById('1');
 let answerCButton = document.getElementById('2');
 let answerDButton = document.getElementById('3');
-let questionPrompt = document.getElementById('question'); 
+let questionPrompt = document.getElementById('question');
 
 let score = document.getElementById('score');
+
+
+
+// Function to start the quiz upon clicking "Begin Quiz" button
+function startQuiz() {
+  var infoEl = document.getElementById("main-info");
+  infoEl.style.display = "none";
+  var quizEl = document.getElementById("quiz");
+  quizEl.style.display = "block";
+
+  startTimer();
+  displayNextQuestion();
+
+  // answerChoices();
+
+}
 
 // Display each question and the answer options.
 
@@ -85,7 +89,7 @@ function displayNextQuestion() {
   answerBButton.textContent = questions[0].choices[1];
   answerCButton.textContent = questions[0].choices[2];
   answerDButton.textContent = questions[0].choices[3];
-}
+
 
 // Here is where I began to render my elements but changed my apprach due to time and wanting to get more completed to submit.
 
@@ -95,62 +99,57 @@ function displayNextQuestion() {
 // answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
 // quizContent.appendChild(answerBtn);
 
-answerAButton.addEventListener('click', function(event) {
-
-  console.log(event.target.textContent === questions[0].answer);
- if (event.target.textContent === questions[0].answer) {
+answerAButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
     scorePoints += 10
     score.textContent = scorePoints
- }
-  i++; 
-  
-})
-answerBButton.addEventListener('click', function(event) {
-  console.log(event.target.value)
-  i+=1; 
-  console.log(i)
-})
-answerCButton.addEventListener('click', function(event) {
-  console.log(event.target.value)
-})
-answerDButton.addEventListener('click', function(event) {
- console.log(event.target.value)
+    i++;
+  }
+
 })
 
+answerBButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
+    scorePoints += 10
+    score.textContent = scorePoints
+    i += 1;
+  }
+})
 
+answerCButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
+    scorePoints += 10
+    score.textContent = scorePoints
+    i += 1;
+  }
+})
 
-// Function to start the quiz upon clicking "Begin Quiz" button
-function startQuiz() {
-    var infoEl = document.getElementById("main-info");
-    infoEl.style.display = "none";
-    var quizEl = document.getElementById("quiz");
-    quizEl.style.display = "block";
-
-    startTimer();
-    displayNextQuestion(); 
-
-    answerChoices();
-
-}
+answerDButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
+    scorePoints += 10
+    score.textContent = scorePoints
+    i += 1;
+  }
+})
+};
 
 
 // Function to start the timer
 
 function startTimer() {
-    
-    var interval = setInterval(function () {
-      document.getElementById('timer').innerHTML = timer;
-      --timer;
-      if (timer < 10) {
-        clearInterval(interval);
-        document.getElementById('timer').innerHTML = "0" + timer;
-      }
-    }, 1000);
+
+  var interval = setInterval(function () {
+    document.getElementById('timer').innerHTML = timer;
+    --timer;
+    if (timer < 10) {
+      clearInterval(interval);
+      document.getElementById('timer').innerHTML = "0" + timer;
+    }
+  }, 1000);
 
 }
 
-function answerChoices() {
-    
+// function answerChoices() {
+
 }
 
-    
