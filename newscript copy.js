@@ -28,7 +28,7 @@ var timer = 60;
 var questions = [
   {
     question: "Commonly Used data types DO NOT include:",
-    choices: ["strings", "alerts", "booleans", "numbers"],
+    choices: ["stings", "alerts", "booleans", "numbers"],
     answer: "alerts"
   },
   {
@@ -61,10 +61,9 @@ let answerAButton = document.getElementById('0');
 let answerBButton = document.getElementById('1');
 let answerCButton = document.getElementById('2');
 let answerDButton = document.getElementById('3');
+let questionPrompt = document.getElementById('question');
 
 let score = document.getElementById('score');
-
-let quizHeadings = document.getElementById("question-heading");
 
 
 
@@ -76,74 +75,66 @@ function startQuiz() {
   quizEl.style.display = "block";
 
   startTimer();
-  quizQuestions();
-  // displayNextQuestion();
+  displayNextQuestion();
 
   // answerChoices();
-quizHeadings.textContent = questions[0].question;
 
 }
 
 // Display each question and the answer options.
 
-// function displayNextQuestion() {
-//   questionPrompt.textContent = questions[0].question;
-//   answerAButton.textContent = questions[0].choices[0];
-//   answerBButton.textContent = questions[0].choices[1];
-//   answerCButton.textContent = questions[0].choices[2];
-//   answerDButton.textContent = questions[0].choices[3];
-var quizContent = document.querySelector("#quiz-content");
+function displayNextQuestion() {
+  questionPrompt.textContent = questions[0].question;
+  answerAButton.textContent = questions[0].choices[0];
+  answerBButton.textContent = questions[0].choices[1];
+  answerCButton.textContent = questions[0].choices[2];
+  answerDButton.textContent = questions[0].choices[3];
 
 
-function quizQuestions() {
-  for (var i = 0; i < 4; i++) {
-    var answerBtn = document.createElement("button");
-    answerBtn.innerHTML = questions[0].choices[i];
-    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
-    quizContent.appendChild(answerBtn);
+// Here is where I began to render my elements but changed my apprach due to time and wanting to get more completed to submit.
+
+// var quizContent = document.querySelector("#quiz-content");
+// var answerBtn = document.createElement("button");
+// answerBtn.innerHTML = questions[0].choices[0];
+// answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
+// quizContent.appendChild(answerBtn);
+
+answerAButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
+    scorePoints += 10
+    score.textContent = scorePoints
+    i++;
   }
+
+})
+
+answerBButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
+    scorePoints += 10
+    score.textContent = scorePoints
+    i += 1;
+  }
+})
+
+answerCButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
+    scorePoints += 10
+    score.textContent = scorePoints
+    i += 1;
+  }
+})
+
+answerDButton.addEventListener('click', function (event) {
+  if (event.target.textContent === questions[0].answer) {
+    scorePoints += 10
+    score.textContent = scorePoints
+    i += 1;
+  }
+})
 };
 
 
-
-
-
-// answerAButton.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i++;
-//   }
-
-// })
-
-// answerBButton.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i += 1;
-//   }
-// })
-
-// answerCButton.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i += 1;
-//   }
-// })
-
-// answerDButton.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i += 1;
-//   }
-// })
-// };
-
-
-// // Function to start the timer
+// Function to start the timer
 
 function startTimer() {
 

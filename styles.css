@@ -9,6 +9,12 @@ header {
     align-items: center;
 }
 
+#question-heading {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    font-weight: bold;
+}
+
 #timer-container {
     float: right;
     font-family: Georgia, 'Times New Roman', Times, serif;
