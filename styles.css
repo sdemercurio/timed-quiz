@@ -15,6 +15,10 @@ header {
     float: right;
 }
 
+#score-count {
+    float: right;
+}
+
 #high-scores {
     padding-top: 30px;
 }

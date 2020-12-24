@@ -17,9 +17,15 @@
             <div class="row">
                 <div class="col">
                     <a href="#"><span id="high-scores">High Scores</span></a>
-                    <div id="timer-container">Time: <span id="timer">00</span>
+                   <div id="score-count">Score: <span id="score">0</span>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div id="timer-container">Time: <span id="timer">00</span>
+                    </div>
+                 </div>
             </div>
         </div>
     </header>
@@ -34,23 +40,29 @@
                     <h1>Coding Quiz Challenge</h1>
                     <p>Try to answer the folllowing code related questions within the time limit.
                         Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
+
+    <!-- Begin quiz on button click -->                    
+
                     <button type="button" onclick="startQuiz()" class="btn btn-dark" id="begin-quiz">Begin Quiz</button>
                 </div>
                 <div class="col-3"></div>
             </div>
         </div>
 
-    <!-- Begin quiz on button click -->
+ 
+
+    <!-- Quiz  -->
 
         <div class="quiz-container" id="quiz">
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6">
-                    <h2>This is question 1</h2>
-                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="option1">Option1</button>
-                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="option2">Option2</button>
-                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="option3">Option3</button>
-                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="option4">Option4</button>
+                   <div id="question">This is question 1</div>
+                   <!-- <div id="quiz-content"></div> -->
+                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="0">Option1</button>
+                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="1">Option2</button>
+                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="2">Option3</button>
+                    <button type="button" class="btn btn-dark btn-block mt-2 d-block quiz-button" id="3">Option4</button>
                 </div>
                 <div class="col-3"></div>
             </div>
