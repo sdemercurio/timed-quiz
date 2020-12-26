@@ -65,6 +65,8 @@ let answerDButton = document.getElementById('3');
 let score = document.getElementById('score');
 
 let quizHeadings = document.getElementById("question-heading");
+var quizContent = document.querySelector("#quiz-content");
+
 
 
 
@@ -76,12 +78,12 @@ function startQuiz() {
   quizEl.style.display = "block";
 
   startTimer();
-  quizQuestions();
+  
   // displayNextQuestion();
 
   // answerChoices();
 quizHeadings.textContent = questions[0].question;
-
+quizAnswers();
 }
 
 // Display each question and the answer options.
@@ -92,23 +94,45 @@ quizHeadings.textContent = questions[0].question;
 //   answerBButton.textContent = questions[0].choices[1];
 //   answerCButton.textContent = questions[0].choices[2];
 //   answerDButton.textContent = questions[0].choices[3];
-var quizContent = document.querySelector("#quiz-content");
 
-
-function quizQuestions() {
+// Append buttons to HTML
+function quizAnswers() {
   for (var i = 0; i < 4; i++) {
     var answerBtn = document.createElement("button");
     answerBtn.innerHTML = questions[0].choices[i];
-    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
+    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button" );
+    answerBtn.setAttribute("id", "choice-" + [i]);
     quizContent.appendChild(answerBtn);
+// addEvent Listener for buttons and log 10 points if correct
+    answerBtn.addEventListener('click', function (event) {
+      if (event.target.textContent === questions[0].answer) {
+        scorePoints += 10
+        score.textContent = scorePoints
+        i += 1;
+      } else{
+        
+      }
+    })
   }
+ 
 };
 
 
+function startTimer() {
+
+  var interval = setInterval(function () {
+    document.getElementById('timer').innerHTML = timer;
+    --timer;
+    if (timer < 10) {
+      clearInterval(interval);
+      document.getElementById('timer').innerHTML = "0" + timer;
+    }
+  }, 1000);
+
+}
 
 
-
-// answerAButton.addEventListener('click', function (event) {
+// answerBtn.addEventListener('click', function (event) {
 //   if (event.target.textContent === questions[0].answer) {
 //     scorePoints += 10
 //     score.textContent = scorePoints
@@ -117,13 +141,7 @@ function quizQuestions() {
 
 // })
 
-// answerBButton.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i += 1;
-//   }
-// })
+
 
 // answerCButton.addEventListener('click', function (event) {
 //   if (event.target.textContent === questions[0].answer) {
@@ -145,18 +163,7 @@ function quizQuestions() {
 
 // // Function to start the timer
 
-function startTimer() {
 
-  var interval = setInterval(function () {
-    document.getElementById('timer').innerHTML = timer;
-    --timer;
-    if (timer < 10) {
-      clearInterval(interval);
-      document.getElementById('timer').innerHTML = "0" + timer;
-    }
-  }, 1000);
-
-}
 
 // function answerChoices() {
 
