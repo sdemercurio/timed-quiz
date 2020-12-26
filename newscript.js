@@ -57,15 +57,13 @@ var questions = [
 
 // Variables for each answer button
 
-let answerAButton = document.getElementById('0');
-let answerBButton = document.getElementById('1');
-let answerCButton = document.getElementById('2');
-let answerDButton = document.getElementById('3');
-
 let score = document.getElementById('score');
 
 let quizHeadings = document.getElementById("question-heading");
 var quizContent = document.querySelector("#quiz-content");
+var questionNumbers = 0
+var numberOfQuestions = questions.length;
+var questionChoices = questions[questionNumbers].choices; 
 
 
 
@@ -79,38 +77,57 @@ function startQuiz() {
 
   startTimer();
   
-  // displayNextQuestion();
+// displayNextQuestion();
 
-  // answerChoices();
+// Quiz questions
 quizHeadings.textContent = questions[0].question;
 quizAnswers();
 }
 
-// Display each question and the answer options.
+// Function to start the timer
+function startTimer() {
 
-// function displayNextQuestion() {
-//   questionPrompt.textContent = questions[0].question;
-//   answerAButton.textContent = questions[0].choices[0];
-//   answerBButton.textContent = questions[0].choices[1];
-//   answerCButton.textContent = questions[0].choices[2];
-//   answerDButton.textContent = questions[0].choices[3];
+  var interval = setInterval(function () {
+    document.getElementById('timer').innerHTML = timer;
+    timer--;
+    if (timer < 0) {
+      clearInterval(interval);
+      document.getElementById('timer').innerHTML = timer;
+    }
+  }, 1000);
 
-// Append buttons to HTML
+}
+
+// Append buttons to DOM
 function quizAnswers() {
-  for (var i = 0; i < 4; i++) {
+  for (var i = 0; i < questionChoices.length; i++) {
     var answerBtn = document.createElement("button");
     answerBtn.innerHTML = questions[0].choices[i];
     answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button" );
-    answerBtn.setAttribute("id", "choice-" + [i]);
+
+// Answer choices change
+    answerBtn.textContent = questions[questionNumbers].choices[i];
     quizContent.appendChild(answerBtn);
+
 // addEvent Listener for buttons and log 10 points if correct
+
     answerBtn.addEventListener('click', function (event) {
-      if (event.target.textContent === questions[0].answer) {
+      if (event.target.textContent === questions[questionNumbers].answer) {
+
+
         scorePoints += 10
         score.textContent = scorePoints
         i += 1;
-      } else{
+// Then switch to next question.
+        questionNumbers = questionNumbers + 1;
         
+        if (questionNumbers <= (numberOfQuestions - 1)) {
+          quizHeadings.textContent = questions[questionNumbers].question;
+
+          quizContent.innerHTML = " ";
+          quizAnswers();
+        }
+
       }
     })
   }
@@ -118,54 +135,10 @@ function quizAnswers() {
 };
 
 
-function startTimer() {
-
-  var interval = setInterval(function () {
-    document.getElementById('timer').innerHTML = timer;
-    --timer;
-    if (timer < 10) {
-      clearInterval(interval);
-      document.getElementById('timer').innerHTML = "0" + timer;
-    }
-  }, 1000);
-
-}
-
-
-// answerBtn.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i++;
-//   }
-
-// })
 
 
 
-// answerCButton.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i += 1;
-//   }
-// })
 
-// answerDButton.addEventListener('click', function (event) {
-//   if (event.target.textContent === questions[0].answer) {
-//     scorePoints += 10
-//     score.textContent = scorePoints
-//     i += 1;
-//   }
-// })
-// };
-
-
-// // Function to start the timer
-
-
-
-// function answerChoices() {
 
 
 
