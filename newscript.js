@@ -19,11 +19,6 @@
 // logScore
 // displayMessage
 // loadNextQuestion
-let i = 0;
-let scorePoints = 0
-
-
-var timer = 60;
 
 var questions = [
   {
@@ -59,12 +54,17 @@ var questions = [
 var infoEl = document.getElementById("main-info");
 var quizEl = document.getElementById("quiz");
 let score = document.getElementById('score');
-
+let i = 0;
 let quizHeadings = document.getElementById("question-heading");
 var quizContent = document.querySelector("#quiz-content");
 var questionNumbers = 0
 var numberOfQuestions = questions.length;
 var questionChoices = questions[questionNumbers].choices;
+let scorePoints = 0
+let gameClock = document.getElementById("timer");
+
+
+var quizTimer = numberOfQuestions * 10;
 
 
 
@@ -86,13 +86,25 @@ function startQuiz() {
 // Function to start the timer
 function startTimer() {
 
-  var interval = setInterval(function () {
-    document.getElementById('timer').innerHTML = timer;
-    --timer;
-    if (timer < 10) {
-      clearInterval(interval);
-      document.getElementById('timer').innerHTML = "0" + timer;
-    }
+  var timerInterval = setInterval(function () {
+    gameClock.textContent = quizTimer;
+    quizTimer--;
+
+    // Once the timer hits zero, game is ended
+    if (quizTimer <= 0) {
+      clearInterval(timerInterval);
+      gameClock.textContent = "0";
+      quizContent.innerHTML = " ";
+      questionNumbers = 0;
+  } 
+  // Freeze clock if user runs through all the questions and end game
+  else if (questionNumbers === 5) {
+      clearInterval(timerInterval);
+      // Reset stats so user can start a new game
+      questionNumbers = 0;
+      qizTimer = numberOfQuestions * 15;
+  }
+    
   }, 1000);
 
 }
@@ -145,22 +157,18 @@ document.addEventListener('click', function (event) {
         quizContent.innerHTML = " ";
         quizAnswers();
       }
+    }
+    else {
+      incorrectAnswer();
+      questionNumbers = questionNumbers + 1;
 
-    } else if (event.target.textContent !== questions[questionNumbers].answer) {
+      if (questionNumbers <= (numberOfQuestions - 1)) {
+        quizHeadings.textContent = questions[questionNumbers].question;
 
-    incorrectAnswer();
-
-    questionNumbers = questionNumbers + 1;
-  
-    if (questionNumbers <= (numberOfQuestions - 1)) {
-      quizHeadings.textContent = questions[questionNumbers].question;
-  
-      quizContent.innerHTML = " ";
-      quizAnswers();
-      
+        quizContent.innerHTML = " ";
+        quizAnswers();
     }
   }
 }
-
 })
 
