@@ -64,7 +64,7 @@ let scorePoints = 0
 let gameClock = document.getElementById("timer");
 
 
-var quizTimer = numberOfQuestions * 10;
+var quizTimer = numberOfQuestions * 15;
 
 
 
@@ -96,13 +96,17 @@ function startTimer() {
       gameClock.textContent = "0";
       quizContent.innerHTML = " ";
       questionNumbers = 0;
+      quizContent.setAttribute("display", "none");
+      infoEl.setAttribute("style", "display: block;");
+      quizHeadings.textContent = "Your score is: " +  quizTimer;
+      quizTimer = numberOfQuestions * 15;
   } 
   // Freeze clock if user runs through all the questions and end game
   else if (questionNumbers === 5) {
       clearInterval(timerInterval);
-      // Reset stats so user can start a new game
+      // Reset elements so user can start a new game
       questionNumbers = 0;
-      qizTimer = numberOfQuestions * 15;
+      quizTimer = numberOfQuestions * 15;
   }
     
   }, 1000);
@@ -118,23 +122,23 @@ function quizAnswers() {
     answerBtn.textContent = questions[questionNumbers].choices[i];
     quizContent.appendChild(answerBtn);
   }
-};
+}
 //Function for correct answer message
-function correctAnswer() {
-  var correctMessage = document.createElement("div");
-  correctMessage.setAttribute("class", "border-top mt-3 pt-3");
-  correctMessage.setAttribute("style", "font-size: 24px; font-family: Verdana, Tahoma, sans-serif;");
-  correctMessage.textContent = "You are correct!";
-  quizEl.appendChild(correctMessage);
-}
+// function correctAnswer() {
+//   var correctMessage = document.quizContent.createElement("div");
+//   correctMessage.setAttribute("class", "border-top mt-3 pt-3");
+//   correctMessage.setAttribute("style", "font-size: 24px; font-family: Verdana, Tahoma, sans-serif;");
+//   correctMessage.textContent = "Correct!";
+//   quizContent.appendChild(correctMessage);
+// }
 //Function for incorrect message
-function incorrectAnswer() {
-  var incorrectMessage = document.createElement("div");
-  incorrectMessage.setAttribute("class", "border-top mt-3 pt-3");
-  incorrectMessage.setAttribute("style", "font-size: 24px; font-family: Verdana, Tahoma, sans-serif;");
-  incorrectMessage.textContent = "Wrong!";
-  quizEl.appendChild(incorrectMessage);
-}
+// function incorrectAnswer() {
+//   var incorrectMessage = document.quizContent.createElement("div");
+//   incorrectMessage.setAttribute("class", "border-top mt-3 pt-3");
+//   incorrectMessage.setAttribute("style", "font-size: 24px; font-family: Verdana, Tahoma, sans-serif;");
+//   incorrectMessage.textContent = "Wrong!";
+//   quizContent.appendChild(incorrectMessage);
+// }
 
 // addEvent Listener for buttons and log 10 points if correct
 
@@ -147,7 +151,6 @@ document.addEventListener('click', function (event) {
       scorePoints += 10
       score.textContent = scorePoints
       i += 1;
-      correctAnswer();
       // Then switch to next question and answer choices
       questionNumbers = questionNumbers + 1;
 
@@ -157,18 +160,12 @@ document.addEventListener('click', function (event) {
         quizContent.innerHTML = " ";
         quizAnswers();
       }
-    }
-    else {
-      incorrectAnswer();
-      questionNumbers = questionNumbers + 1;
 
-      if (questionNumbers <= (numberOfQuestions - 1)) {
-        quizHeadings.textContent = questions[questionNumbers].question;
+      // Deduct 15 seconds for wrong answer
 
-        quizContent.innerHTML = " ";
-        quizAnswers();
+    } else {
+      quizTimer -= 15;
     }
   }
-}
 })
 
