@@ -56,32 +56,31 @@ var questions = [
 ];
 
 // Variables for each answer button
-
+var infoEl = document.getElementById("main-info");
+var quizEl = document.getElementById("quiz");
 let score = document.getElementById('score');
 
 let quizHeadings = document.getElementById("question-heading");
 var quizContent = document.querySelector("#quiz-content");
 var questionNumbers = 0
 var numberOfQuestions = questions.length;
-var questionChoices = questions[questionNumbers].choices; 
+var questionChoices = questions[questionNumbers].choices;
 
 
 
 
 // Function to start the quiz upon clicking "Begin Quiz" button
 function startQuiz() {
-  var infoEl = document.getElementById("main-info");
   infoEl.style.display = "none";
-  var quizEl = document.getElementById("quiz");
   quizEl.style.display = "block";
 
   startTimer();
-  
-// displayNextQuestion();
 
-// Quiz questions
-quizHeadings.textContent = questions[0].question;
-quizAnswers();
+  // displayNextQuestion();
+
+  // Quiz questions
+  quizHeadings.textContent = questions[0].question;
+  quizAnswers();
 }
 
 // Function to start the timer
@@ -89,56 +88,79 @@ function startTimer() {
 
   var interval = setInterval(function () {
     document.getElementById('timer').innerHTML = timer;
-    timer--;
-    if (timer < 0) {
+    --timer;
+    if (timer < 10) {
       clearInterval(interval);
-      document.getElementById('timer').innerHTML = timer;
+      document.getElementById('timer').innerHTML = "0" + timer;
     }
   }, 1000);
 
 }
 
-// Append buttons to DOM
+// Create, style, and append answer buttons
 function quizAnswers() {
   for (var i = 0; i < questionChoices.length; i++) {
     var answerBtn = document.createElement("button");
     answerBtn.innerHTML = questions[0].choices[i];
-    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button" );
-
-// Answer choices change
+    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
     answerBtn.textContent = questions[questionNumbers].choices[i];
     quizContent.appendChild(answerBtn);
+  }
+};
+//Function for correct answer message
+function correctAnswer() {
+  var correctMessage = document.createElement("div");
+  correctMessage.setAttribute("class", "border-top mt-3 pt-3");
+  correctMessage.setAttribute("style", "font-size: 24px; font-family: Verdana, Tahoma, sans-serif;");
+  correctMessage.textContent = "You are correct!";
+  quizEl.appendChild(correctMessage);
+}
+//Function for incorrect message
+function incorrectAnswer() {
+  var incorrectMessage = document.createElement("div");
+  incorrectMessage.setAttribute("class", "border-top mt-3 pt-3");
+  incorrectMessage.setAttribute("style", "font-size: 24px; font-family: Verdana, Tahoma, sans-serif;");
+  incorrectMessage.textContent = "Wrong!";
+  quizEl.appendChild(incorrectMessage);
+}
 
 // addEvent Listener for buttons and log 10 points if correct
 
-    answerBtn.addEventListener('click', function (event) {
-      if (event.target.textContent === questions[questionNumbers].answer) {
+document.addEventListener('click', function (event) {
+  if (event.target.matches(".quiz-button")) {
+
+    if (event.target.textContent === questions[questionNumbers].answer) {
 
 
-        scorePoints += 10
-        score.textContent = scorePoints
-        i += 1;
-// Then switch to next question.
-        questionNumbers = questionNumbers + 1;
-        
-        if (questionNumbers <= (numberOfQuestions - 1)) {
-          quizHeadings.textContent = questions[questionNumbers].question;
+      scorePoints += 10
+      score.textContent = scorePoints
+      i += 1;
+      correctAnswer();
+      // Then switch to next question and answer choices
+      questionNumbers = questionNumbers + 1;
 
-          quizContent.innerHTML = " ";
-          quizAnswers();
-        }
+      if (questionNumbers <= (numberOfQuestions - 1)) {
+        quizHeadings.textContent = questions[questionNumbers].question;
 
+        quizContent.innerHTML = " ";
+        quizAnswers();
       }
-    })
+
+    } else if (event.target.textContent !== questions[questionNumbers].answer) {
+
+    incorrectAnswer();
+
+    questionNumbers = questionNumbers + 1;
+  
+    if (questionNumbers <= (numberOfQuestions - 1)) {
+      quizHeadings.textContent = questions[questionNumbers].question;
+  
+      quizContent.innerHTML = " ";
+      quizAnswers();
+      
+    }
   }
- 
-};
+}
 
-
-
-
-
-
-
-
+})
 
