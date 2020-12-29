@@ -58,7 +58,7 @@ let quizHeadings = document.getElementById("question-heading");
 var quizContent = document.querySelector("#quiz-content");
 var questionNumbers = 0
 var numberOfQuestions = questions.length;
-var answerChoices = questions[questionNumbers].choices; 
+var answerChoices = questions[questionNumbers].choices;
 var messageEl = document.getElementById("message");
 
 let i = 0;
@@ -76,12 +76,12 @@ function startQuiz() {
   quizEl.style.display = "block";
 
   startTimer();
-  
-// displayNextQuestion();
 
-// Quiz questions
-quizHeadings.textContent = questions[0].title;
-quizAnswers();
+  // displayNextQuestion();
+
+  // Quiz questions
+  quizHeadings.textContent = questions[0].title;
+  quizAnswers();
 }
 
 // Function to start the timer
@@ -108,22 +108,37 @@ function quizAnswers() {
   for (var i = 0; i < answerChoices.length; i++) {
     var answerBtn = document.createElement("button");
     answerBtn.innerHTML = questions[0].choices[i];
-    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button" );
+    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
     answerBtn.textContent = questions[questionNumbers].choices[i];
     quizContent.appendChild(answerBtn);
 
-// addEvent Listener for buttons and log 10 points if correct
+    // addEvent Listener for buttons and log 10 points if correct
 
     answerBtn.addEventListener('click', function (event) {
       if (event.target.textContent === questions[questionNumbers].answer) {
 
-        answerMessage("correct","Correct!");
+        answerMessage("correct", "Correct!");
         scorePoints += 10
         score.textContent = scorePoints
-        
-// Then switch to next question.
+
+        // Then switch to next question.
         questionNumbers = questionNumbers + 1;
-        
+
+        if (questionNumbers <= (numberOfQuestions - 1)) {
+          quizHeadings.textContent = questions[questionNumbers].title;
+
+          quizContent.innerHTML = " ";
+          quizAnswers();
+        }
+
+      } else {
+        answerMessage("incorrect", "wrong!");
+        scorePoints += 10
+        score.textContent = scorePoints
+
+        // Then switch to next question.
+        questionNumbers = questionNumbers + 1;
+
         if (questionNumbers <= (numberOfQuestions - 1)) {
           quizHeadings.textContent = questions[questionNumbers].title;
 
@@ -134,6 +149,6 @@ function quizAnswers() {
       }
     });
   }
- 
+
 };
 
