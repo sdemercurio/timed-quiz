@@ -101,7 +101,6 @@ function startTimer() {
 function answerMessage(type, message) {
     messageEl.textContent = message;
     messageEl.setAttribute("class", type);
-    setTimeout()
 }
 
 // Append buttons to DOM
@@ -118,7 +117,6 @@ function quizAnswers() {
         answerBtn.addEventListener('click', function (event) {
             if (event.target.textContent === questions[questionNumbers].answer) {
 
-                setTimeout(answerMessage, 1000);
                 answerMessage("correct", "Correct!");
                 scorePoints += 10
                 score.textContent = scorePoints
@@ -134,9 +132,13 @@ function quizAnswers() {
                 }
 
             } else {
-                setTimeout(answerMessage, 1000);
+                
                 answerMessage("incorrect", "wrong!");
                 timer -= 15;
+
+                
+
+
 
                 // Then switch to next question.
                 questionNumbers = questionNumbers + 1;

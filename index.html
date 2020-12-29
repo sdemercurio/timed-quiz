@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
+​
 
 <head>
     <meta charset="UTF-8">
@@ -9,9 +10,10 @@
     <link rel="stylesheet" href="style.css">
     <title>Timed-Quiz</title>
 </head>
+​
 
 <body>
-
+    ​
     <!-- Header -->
     <header>
         <div class="container">
@@ -21,7 +23,7 @@
                     <div id="score-count">Score: <span id="score">0</span>
                     </div>
                 </div>
-
+                ​
                 <div class="row">
                     <div class="col">
                         <div id="timer-container">Time: <span id="timer">00</span>
@@ -31,7 +33,7 @@
             </div>
     </header>
     <!-- Main content -->
-
+    ​
     <!-- Will change to begin quiz on button click -->
     <main>
         <div class="main-container" id="main-info">
@@ -41,49 +43,34 @@
                     <h1>Coding Quiz Challenge</h1>
                     <p>Try to answer the folllowing code related questions within the time limit.
                         Keep in mind that incorrect answers will penalize your time by ten seconds!</p>
-
+                    ​
                     <!-- Begin quiz on button click -->
-
+                    ​
                     <button type="button" onclick="startQuiz()" class="btn btn-dark" id="begin-quiz">Begin Quiz</button>
                 </div>
                 <div class="col-3"></div>
             </div>
         </div>
+        ​
 
-
-
+        ​
         <!-- Quiz  -->
-
+        ​
         <div class="quiz-container" id="quiz">
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6">
                     <div id="question-heading"></div>
-                    <div id="quiz-content">
-                        <div id="message"></div>
-                    </div>
-
-                </div>
-                <div class="col-3"></div>
-            </div>
-        </div>
-
-        <div class="form-container">
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <div id="question-heading"></div>
-                    <div id="quiz-content">
-                        <div id="message"></div>
-                    </div>
+                    <div id="quiz-content"></div>
+                    <div id="message"></div>
                 </div>
                 <div class="col-3"></div>
             </div>
         </div>
     </main>
 
-
-
+    ​
+    ​
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -95,3 +82,6 @@
         crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
+​
+
+</html>
