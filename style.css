@@ -45,6 +45,7 @@ p {
 #main-info {
     text-align: center;
     margin-top: 60px;
+
 }
 
 #quiz {
@@ -60,9 +61,24 @@ p {
     font-weight: bold;
 }
 
+#message {
+    visibility: hidden;
+}
+
+#message.correct {
+    color: rgb(33, 141, 33);
+}
+
+#message.wrong {
+    color: rgb(196, 5, 5);
+}
+
+#message.correct,
+#message.wrong {
+    visibility: visible;
+}
+
 /* Quiz buttons */
 .quiz-button {
     text-align: left;
 }
-
-
