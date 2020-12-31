@@ -4,6 +4,8 @@ const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 function clearHighScores() {
     highScoresList.innerHTML = "";
+    //Clears all local storage
+    // localStorage.clear();
 
 };
 
