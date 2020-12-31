@@ -62,16 +62,21 @@ var messageEl = document.getElementById("message");
 
 let i = 0;
 let scorePoints = 0
+let finalScore = scorePoints
 var timer = 10;
 var endQuiz = document.getElementById("end");
-var userScore = document.querySelector("user-score");
+var userScore = document.getElementById("user-score");
 var bonusScore = document.querySelector("bonus-score");
 var totalScore = document.querySelector("total-score");
 var startBtn = document.getElementById("begin-quiz");
 var quizEl = document.getElementById("quiz");
 var infoEl = document.getElementById("main-info");
+var initialsInput = document.getElementById("initialsInput");
+var submitBtn = document.getElementById("submitBtn");
 
 startBtn.addEventListener("click", startQuiz);
+submitBtn.addEventListener("click", submitHighScore);
+
 
 
 
@@ -84,10 +89,13 @@ function startQuiz() {
   var interval = setInterval(function () {
     document.getElementById('timer').innerHTML = timer;
     timer--;
-    if (timer == 0) {
+    if (timer === 0) {
       clearInterval(interval);
       document.getElementById('timer').innerHTML = timer;
       stopQuiz();
+    }
+    if (numberOfQuestions > 5){
+      clearInterval(interval);
     }
   }, 1000);
 
@@ -138,6 +146,8 @@ function quizAnswers() {
           quizContent.innerHTML = " ";
 
           quizAnswers();
+        }else{
+          stopQuiz();
         }
 
       } else {
@@ -166,6 +176,10 @@ function stopQuiz() {
 
   quizEl.style.display = "none";
   endQuiz.style.display = "block";
+  userScore.textContent = "You scored " + scorePoints + " points";
 }
 
+function submitHighScore() {
+
+}
 

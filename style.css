@@ -78,7 +78,7 @@ p {
     visibility: visible;
 }
 
-.end-container {
+#end {
     display: none;
 }
 
