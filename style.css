@@ -10,36 +10,58 @@ header {
 }
 
 #question-heading {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 36px;
-    font-weight: bold;
+    font-family: sofia-pro-condensed, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 60px;
+    font-style: normal;
+    text-align: left;
+    letter-spacing: 2px;
+    line-height: 80%;
+    margin-bottom: 20px;
 }
 
 #timer-container {
     float: right;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: sofia-pro, sans-serif;
 }
 
 #score-count {
     float: right;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: sofia-pro, sans-serif;
 }
 
 #high-scores {
     padding-top: 30px;
     color: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: sofia-pro, sans-serif;
 }
 
 h1 {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 36px;
-    font-weight: bold;
+    font-family: sofia-pro, sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    letter-spacing: -5px;
+    line-height: 80%;
+}
+
+h2 {
+    font-family: sofia-pro-condensed, sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: 30px;
 }
 
 p {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: sofia-pro-condensed, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     font-size: 18px;
+    margin-top: 20px;
+    padding-right: 130px;
+    text-align: left;
 }
 
 #main-info {
@@ -84,6 +106,11 @@ p {
 
 
 /* Quiz buttons */
+
+#begin-quiz {
+    float: left;
+}
 .quiz-button {
     text-align: left;
+    display: inline-block;
 }

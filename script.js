@@ -95,7 +95,7 @@ submitHighScore = e => {
   };
   highScores.push(score);
   // Sort scores from highest to lowest. If score b is higher than score a, place score b first
-  highScores.sort( (a,b) => b.score - a.score)
+  highScores.sort((a, b) => b.score - a.score)
 
   // Remove scores lower than the top 5
   highScores.splice(5);
@@ -131,7 +131,7 @@ function startQuiz() {
       document.getElementById('timer').innerHTML = timer;
       stopQuiz();
     }
-    if (numberOfQuestions > 5){
+    if (numberOfQuestions > 5) {
       clearInterval(interval);
     }
   }, 1000);
@@ -144,7 +144,7 @@ function startQuiz() {
 // Function to start the timer
 // function startTimer() {
 
-  
+
 // }
 
 function answerMessage(type, message) {
@@ -158,6 +158,7 @@ function quizAnswers() {
     var answerBtn = document.createElement("button");
     answerBtn.innerHTML = questions[0].choices[i];
     answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
+    answerBtn.setAttribute("style", "width: 250px;");
     answerBtn.textContent = questions[questionNumbers].choices[i];
     quizContent.appendChild(answerBtn);
 
@@ -183,7 +184,7 @@ function quizAnswers() {
           quizContent.innerHTML = " ";
 
           quizAnswers();
-        }else{
+        } else {
           stopQuiz();
         }
 
@@ -214,6 +215,8 @@ function stopQuiz() {
   quizEl.style.display = "none";
   endQuiz.style.display = "block";
   userScore.textContent = "You scored " + scorePoints + " points";
+  userScore.setAttribute("style", "font-family: sofia-pro-condensed, sans-serif; font-weight: 400; font-style: normal; font-size: 50px; text-align: left; letter-spacing: -3px;")
+
 
   
 }
