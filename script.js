@@ -21,29 +21,29 @@
 
 var questions = [
   {
-      title: "Commonly Used data types DO NOT include:",
-      choices: ["strings", "alerts", "booleans", "numbers"],
-      answer: "alerts"
+    title: "Commonly Used data types DO NOT include:",
+    choices: ["strings", "alerts", "booleans", "numbers"],
+    answer: "alerts"
   },
   {
-      title: "The condition in an if / else statment is enclosed within _____.",
-      choices: ["parentheses", "quotes", "curly brackets", "square brackets"],
-      answer: "parentheses"
+    title: "The condition in an if / else statment is enclosed within _____.",
+    choices: ["parentheses", "quotes", "curly brackets", "square brackets"],
+    answer: "parentheses"
   },
   {
-      title: "What javascipt method can we use to select an html element?",
-      choices: ["document.queryselector()", "document.getElementChild", "document.getElementById", "Both 1 and 3"],
-      answer: "Both 1 and 3"
+    title: "What javascipt method can we use to select an html element?",
+    choices: ["document.queryselector()", "document.getElementChild", "document.getElementById", "Both 1 and 3"],
+    answer: "Both 1 and 3"
   },
   {
-      title: "What html tag is NOT included in the HEAD tag?",
-      choices: ["link", "meta", "title", "header"],
-      answer: "header"
+    title: "What html tag is NOT included in the HEAD tag?",
+    choices: ["link", "meta", "title", "header"],
+    answer: "header"
   },
   {
-      title: "What attribute is used in html to decorate content?",
-      choices: ["css", "class", "src", "style"],
-      answer: "style"
+    title: "What attribute is used in html to decorate content?",
+    choices: ["css", "class", "src", "style"],
+    answer: "style"
   }
 
 
@@ -63,6 +63,11 @@ var messageEl = document.getElementById("message");
 let i = 0;
 let scorePoints = 0
 var timer = 60;
+var endQuiz = document.querySelector("end-container");
+var userScore = document.querySelector("user-score");
+var bonusScore = document.querySelector("bonus-score");
+var totalScore = document.querySelector("total-score");
+var startBtn = document.getElementById("begin-quiz");
 
 
 
@@ -76,10 +81,8 @@ function startQuiz() {
 
   startTimer();
 
-  // displayNextQuestion();
-
   // Quiz questions
-  quizHeadings.textContent = questions[0].title;
+
   quizAnswers();
 }
 
@@ -87,14 +90,13 @@ function startQuiz() {
 function startTimer() {
 
   var interval = setInterval(function () {
+    document.getElementById('timer').innerHTML = timer;
+    timer--;
+    if (timer == 0) {
+      clearInterval(interval);
       document.getElementById('timer').innerHTML = timer;
-      timer--;
-      if (timer == 0) {
-          clearInterval(interval);
-          document.getElementById('timer').innerHTML = timer;
-      }
+    }
   }, 1000);
-
 }
 
 function answerMessage(type, message) {
@@ -105,49 +107,54 @@ function answerMessage(type, message) {
 // Append buttons to DOM
 function quizAnswers() {
   for (var i = 0; i < answerChoices.length; i++) {
-      var answerBtn = document.createElement("button");
-      answerBtn.innerHTML = questions[0].choices[i];
-      answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
-      answerBtn.textContent = questions[questionNumbers].choices[i];
-      quizContent.appendChild(answerBtn);
+    var answerBtn = document.createElement("button");
+    answerBtn.innerHTML = questions[0].choices[i];
+    answerBtn.setAttribute("class", "btn btn-dark btn-block mt-2 d-block quiz-button");
+    answerBtn.textContent = questions[questionNumbers].choices[i];
+    quizContent.appendChild(answerBtn);
 
-      // addEvent Listener for buttons and log 10 points if correct
+    // Quiz Questions
+    quizHeadings.textContent = questions[0].title;
 
-      answerBtn.addEventListener('click', function (event) {
-          if (event.target.textContent === questions[questionNumbers].answer) {
+    // addEvent Listener for buttons and log 10 points if correct
 
-            answerMessage("correct", "Correct!");
-              
-              scorePoints += 10
-              score.textContent = scorePoints
+    answerBtn.addEventListener('click', function (event) {
+      if (event.target.textContent === questions[questionNumbers].answer) {
 
-              // Then switch to next question.
-              questionNumbers = questionNumbers + 1;
+        answerMessage("correct", "Correct!");
 
-              if (questionNumbers <= (numberOfQuestions - 1)) {
-                  quizHeadings.textContent = questions[questionNumbers].title;
+        scorePoints += 10
+        score.textContent = scorePoints
 
-                  quizContent.innerHTML = " ";
-                  
-                  quizAnswers();
-              }
+        // Then switch to next question.
+        questionNumbers = questionNumbers + 1;
 
-          } else {
-            answerMessage("incorrect", "Wrong!");
-              timer -= 15;
+        if (questionNumbers <= (numberOfQuestions - 1)) {
+          quizHeadings.textContent = questions[questionNumbers].title;
 
-              // Then switch to next question.
-              questionNumbers = questionNumbers + 1;
+          quizContent.innerHTML = " ";
 
-              if (questionNumbers <= (numberOfQuestions - 1)) {
-                  quizHeadings.textContent = questions[questionNumbers].title;
+          quizAnswers();
+        }
 
-                  quizContent.innerHTML = " ";
-                  quizAnswers();
-              }
+      } else {
+        answerMessage("incorrect", "Wrong!");
+        timer -= 15;
 
-          }
-      });
+        // Then switch to next question.
+        questionNumbers = questionNumbers + 1;
+
+        if (questionNumbers <= (numberOfQuestions - 1)) {
+          quizHeadings.textContent = questions[questionNumbers].title;
+
+          quizContent.innerHTML = " ";
+          quizAnswers();
+        }
+
+      }
+    });
   }
 
 };
+
+startBtn.addEventListener("click", startQuiz);

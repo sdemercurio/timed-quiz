@@ -78,6 +78,11 @@ p {
     visibility: visible;
 }
 
+.end-container {
+    display: none;
+}
+
+
 /* Quiz buttons */
 .quiz-button {
     text-align: left;
