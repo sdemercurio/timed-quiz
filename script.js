@@ -71,8 +71,45 @@ var totalScore = document.querySelector("total-score");
 var startBtn = document.getElementById("begin-quiz");
 var quizEl = document.getElementById("quiz");
 var infoEl = document.getElementById("main-info");
-var initialsInput = document.getElementById("initialsInput");
+var initialsInput = document.getElementById("user-initials");
 var submitBtn = document.getElementById("submitBtn");
+
+// Get what's in storage or return an empty array
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+console.log(highScores);
+
+const MAX_HIGH_SCORES = 5;
+
+// Disable submit button if user input is null
+initialsInput.addEventListener("keyup", () => {
+  submitBtn.disabled = !initialsInput.value;
+});
+
+submitHighScore = e => {
+  console.log("clicked hte save button");
+  e.preventDefault();
+
+  const score = {
+    score: scorePoints,
+    initials: initialsInput.value
+  };
+  highScores.push(score);
+  // Sort scores from highest to lowest. If score b is higher than score a, place score b first
+  highScores.sort( (a,b) => b.score - a.score)
+
+  // Remove scores lower than the top 5
+  highScores.splice(5);
+
+  // Update local storage, update highscores, and stringify to save string in high scores.
+  localStorage.setItem("highScores", JSON.stringify(highScores));
+  // Direct over to high scores page once user hits submit
+  window.location.assign("highscores.html");
+};
+
+
+//turn highScores into string using JSON.parse
+// localStorage.setItem("highScores", JSON.stringify([]));
+// console.log(JSON.parse(localStorage.getItem("highScores")));
 
 startBtn.addEventListener("click", startQuiz);
 submitBtn.addEventListener("click", submitHighScore);
@@ -177,9 +214,8 @@ function stopQuiz() {
   quizEl.style.display = "none";
   endQuiz.style.display = "block";
   userScore.textContent = "You scored " + scorePoints + " points";
+
+  
 }
 
-function submitHighScore() {
-
-}
 
