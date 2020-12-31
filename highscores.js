@@ -1,6 +1,14 @@
-
+const clearScores = document.getElementById("clear-scores");
 const highScoresList = document.getElementById("highscores-list");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+
+function clearHighScores() {
+    highScoresList.innerHTML = "";
+
+};
+
+clearScores.addEventListener("click", clearHighScores);
+
 
 // map will get a reference to each high score
 //inner.HTML to display the scores
@@ -11,5 +19,3 @@ highScoresList.innerHTML =
     })
     // join elements to a string 
         .join("");
-
-

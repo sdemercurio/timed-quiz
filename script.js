@@ -76,7 +76,7 @@ var submitBtn = document.getElementById("submitBtn");
 
 // Get what's in storage or return an empty array
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-console.log(highScores);
+// console.log(highScores);
 
 const MAX_HIGH_SCORES = 5;
 
