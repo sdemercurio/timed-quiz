@@ -13,17 +13,23 @@
 
 <body>
     <!-- Highscore Display section -->
-    <section id="highscore-display">
-        <div class="row">
-            <div class="col-md-12" id="highScores">
-                <h2>Highscores</h2>
-                <ul id="highscores-list"></ul>
-                <a href="index.html"><button id="return-btn">Home</button></a>
-                <button id="clear-btn">Clear Highscores</button>
+    <main>
+        <div class="container" id="highscore-display">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6" id="highScores">
+                    <h2>Highscores</h2>
+                    <ul id="highscores-list"></ul>
+                    <div class="row">
+                        <a href="index.html"> <button id="home-button" class="btn btn-dark btn-block mt-2 d-block quiz-button">Home</button></a>
+                        <button id="clear-scores" class="btn btn-dark btn-block mt-2 d-block quiz-button">Clear
+                            Highscores</button>
+                    </div>
+                </div>
+                <div class="col-3"></div>
             </div>
         </div>
-    </section>
-    </div>
+    </main>
 </body>
 <script type="text/javascript" src="highscores.js"></script>
 

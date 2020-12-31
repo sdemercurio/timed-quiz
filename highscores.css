@@ -1,0 +1,38 @@
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    font-family: sofia-pro, sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    font-style: normal;
+    text-align: left;
+    letter-spacing: -5px;
+    line-height: 80%;
+    margin-top: 40px;
+}
+
+ul {
+    font-family: sofia-pro-condensed, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    margin-top: 20px;
+    padding-right: 130px;
+    text-align: left;
+}
+
+#home-button {
+    text-align:center;
+    width: 200px;
+    display: inline-block;
+}
+#clear-scores {
+    text-align:center;
+    width: 200px;
+    display: inline-block;
+    margin-left: 10px;
+}

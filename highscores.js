@@ -1,3 +1,4 @@
+
 const highScoresList = document.getElementById("highscores-list");
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
@@ -10,6 +11,5 @@ highScoresList.innerHTML =
     })
     // join elements to a string 
         .join("");
-
 
 
