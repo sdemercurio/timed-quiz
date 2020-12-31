@@ -62,32 +62,24 @@ var messageEl = document.getElementById("message");
 
 let i = 0;
 let scorePoints = 0
-var timer = 60;
-var endQuiz = document.querySelector("end-container");
+var timer = 10;
+var endQuiz = document.getElementById("end");
 var userScore = document.querySelector("user-score");
 var bonusScore = document.querySelector("bonus-score");
 var totalScore = document.querySelector("total-score");
 var startBtn = document.getElementById("begin-quiz");
+var quizEl = document.getElementById("quiz");
+var infoEl = document.getElementById("main-info");
+
+startBtn.addEventListener("click", startQuiz);
 
 
 
 
 // Function to start the quiz upon clicking "Begin Quiz" button
 function startQuiz() {
-  var infoEl = document.getElementById("main-info");
   infoEl.style.display = "none";
-  var quizEl = document.getElementById("quiz");
   quizEl.style.display = "block";
-
-  startTimer();
-
-  // Quiz questions
-
-  quizAnswers();
-}
-
-// Function to start the timer
-function startTimer() {
 
   var interval = setInterval(function () {
     document.getElementById('timer').innerHTML = timer;
@@ -95,9 +87,20 @@ function startTimer() {
     if (timer == 0) {
       clearInterval(interval);
       document.getElementById('timer').innerHTML = timer;
+      stopQuiz();
     }
   }, 1000);
+
+  // Quiz questions
+
+  quizAnswers();
 }
+
+// Function to start the timer
+// function startTimer() {
+
+  
+// }
 
 function answerMessage(type, message) {
   messageEl.textContent = message;
@@ -157,4 +160,12 @@ function quizAnswers() {
 
 };
 
-startBtn.addEventListener("click", startQuiz);
+function stopQuiz() {
+
+  clearInterval(timer);
+
+  quizEl.style.display = "none";
+  endQuiz.style.display = "block";
+}
+
+
